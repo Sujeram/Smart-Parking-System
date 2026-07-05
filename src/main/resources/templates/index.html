@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System - Home</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* General Reset and Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            color: white;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            text-align: left;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            padding-left: 10px;
+            border-left: 4px solid white;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            min-height: 200px;
+            color: inherit;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 12px;
+        }
+        
+        .feature-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.5;
+            font-size: 0.9em;
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #ff4757;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .info-card {
+            cursor: default;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .info-card:hover {
+            transform: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-parking"></i> Smart Parking System</h1>
+            <p>Advanced Parking Management with Customer Loyalty & Reservations</p>
+        </div>
+        
+        <!-- Parking Operations -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-taxi"></i> Parking Operations</h2>
+            <div class="features-grid">
+                <a th:href="@{/park}" class="feature-card">
+                    <div class="feature-icon" style="color: #3498db;"><i class="fas fa-car"></i></div>
+                    <div class="feature-title">Park Vehicle</div>
+                    <div class="feature-description">
+                        Park CAR, MOTORCYCLE, or TRUCK with optional reservation
+                    </div>
+                </a>
+                
+                <a th:href="@{/exit}" class="feature-card">
+                    <div class="feature-icon" style="color: #f39c12;"><i class="fas fa-credit-card"></i></div>
+                    <div class="feature-title">Exit & Payment</div>
+                    <div class="feature-description">
+                        Process exit with CASH, CARD, or UPI payment
+                    </div>
+                </a>
+                
+                <a th:href="@{/tickets}" class="feature-card">
+                    <div class="feature-icon" style="color: #9b59b6;"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="feature-title">Active Tickets</div>
+                    <div class="feature-description">
+                        View all currently parked vehicles and details
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Customer Management -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-users"></i> Customer Management</h2>
+            <div class="features-grid">
+                <a th:href="@{/register}" class="feature-card">
+                    <span class="new-badge">New</span>
+                    <div class="feature-icon" style="color: #1abc9c;"><i class="fas fa-user-plus"></i></div>
+                    <div class="feature-title">Register Customer</div>
+                    <div class="feature-description">
+                        Join loyalty program - Earn 1 point per ₹10 spent
+                    </div>
+                </a>
+                
+                <a th:href="@{/customers}" class="feature-card">
+                    <span class="new-badge">New</span>
+                    <div class="feature-icon" style="color: #34495e;"><i class="fas fa-address-book"></i></div>
+                    <div class="feature-title">All Customers</div>
+                    <div class="feature-description">
+                        View customers with contact & loyalty points balance
+                    </div>
+                </a>
+                
+                <div class="feature-card info-card" style="visibility: hidden;"></div> 
+            </div>
+        </div>
+        
+        <!-- Reservations -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Reservation System</h2>
+            <div class="features-grid">
+                <a th:href="@{/reserve}" class="feature-card">
+                    <span class="new-badge">New</span>
+                    <div class="feature-icon" style="color: #e67e22;"><i class="fas fa-calendar-plus"></i></div>
+                    <div class="feature-title">Make Reservation</div>
+                    <div class="feature-description">
+                        Reserve space for 1-24 hours in advance
+                    </div>
+                </a>
+                
+                <a th:href="@{/reservations}" class="feature-card">
+                    <span class="new-badge">New</span>
+                    <div class="feature-icon" style="color: #2980b9;"><i class="fas fa-clipboard-list"></i></div>
+                    <div class="feature-title">Active Reservations</div>
+                    <div class="feature-description">
+                        View reservations with expiry times and details
+                    </div>
+                </a>
+
+                <div class="feature-card info-card" style="visibility: hidden;"></div> 
+            </div>
+        </div>
+        
+        <!-- Analytics -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> Analytics & Reports</h2>
+            <div class="features-grid">
+                <a th:href="@{/report}" class="feature-card">
+                    <span class="new-badge" style="background: #2ecc71;">Updated</span>
+                    <div class="feature-icon" style="color: #c0392b;"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <div class="feature-title">Reports Dashboard</div>
+                    <div class="feature-description">
+                        Revenue, payment breakdown & occupancy analytics
+                    </div>
+                </a>
+                
+                <a th:href="@{/visualize}" class="feature-card">
+                    <span class="new-badge">New</span>
+                    <div class="feature-icon" style="color: #8e44ad;"><i class="fas fa-project-diagram"></i></div>
+                    <div class="feature-title">Visual Parking Lot</div>
+                    <div class="feature-description">
+                        Interactive 3-floor parking visualization
+                    </div>
+                </a>
+                <div class="feature-card info-card" style="visibility: hidden;"></div>
+            </div>
+        </div>
+        
+        <!-- System Features (Information Only) -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> System Features</h2>
+            <div class="features-grid">
+                <div class="feature-card info-card">
+                    <div class="feature-icon" style="color: #f1c40f;"><i class="fas fa-money-check-alt"></i></div>
+                    <div class="feature-title">Payment Methods</div>
+                    <div class="feature-description">
+                        CASH, CARD, UPI with auto change calculation
+                    </div>
+                </div>
+                
+                <div class="feature-card info-card">
+                    <div class="feature-icon" style="color: #3498db;"><i class="fas fa-gift"></i></div>
+                    <div class="feature-title">Loyalty Program</div>
+                    <div class="feature-description">
+                        100 points = 10% discount (auto-applied)
+                    </div>
+                </div>
+                
+                <div class="feature-card info-card">
+                    <div class="feature-icon" style="color: #27ae60;"><i class="fas fa-wheelchair"></i></div>
+                    <div class="feature-title">Handicapped Priority</div>
+                    <div class="feature-description">
+                        Reserved spaces with priority allocation
+                    </div>
+                </div>
+                
+                <div class="feature-card info-card">
+                    <div class="feature-icon" style="color: #e74c3c;"><i class="fas fa-calendar-day"></i></div>
+                    <div class="feature-title">Weekend Pricing</div>
+                    <div class="feature-description">
+                        1.2x rates on Saturdays & Sundays
+                    </div>
+                </div>
+                
+                <div class="feature-card info-card">
+                    <div class="feature-icon" style="color: #95a5a6;"><i class="fas fa-building"></i></div>
+                    <div class="feature-title">Multi-Floor Layout</div>
+                    <div class="feature-description">
+                        3 Floors with dedicated zones per vehicle type
+                    </div>
+                </div>
+                
+                <div class="feature-card info-card">
+                    <div class="feature-icon" style="color: #f39c12;"><i class="fas fa-hourglass-half"></i></div>
+                    <div class="feature-title">Smart Pricing</div>
+                    <div class="feature-description">
+                        CAR ₹20/hr • MOTORCYCLE ₹10/hr • TRUCK ₹30/hr
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
